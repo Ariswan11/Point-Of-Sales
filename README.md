@@ -1,59 +1,250 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# POS Mitra
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Point of Sale (POS) berbasis Laravel yang dirancang untuk membantu usaha retail, toko, atau warung dalam mengelola produk, pelanggan, supplier, transaksi penjualan, stok, dan laporan secara cepat dan rapi.
 
-## About Laravel
+## 1. Nama Project
+POS Mitra
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 2. Deskripsi
+POS Mitra adalah aplikasi manajemen penjualan yang memiliki fitur utama berikut:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Manajemen kategori produk
+- Manajemen produk dan stok
+- Manajemen supplier dan pelanggan
+- Transaksi pembelian dan penjualan
+- Pembuatan struk penjualan
+- Laporan penjualan dan laporan stok
+- Sistem role user (`admin` dan `kasir`)
+- Tampilan dashboard dan navigasi yang responsif
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 3. Fitur
 
-## Learning Laravel
+### Fitur Utama
+- Dashboard statistik
+- CRUD Kategori
+- CRUD Produk
+- CRUD Supplier
+- CRUD Pelanggan
+- Pembelian stok barang
+- Transaksi penjualan
+- Detail transaksi dan receipt/struk
+- Laporan penjualan
+- Laporan stok
+- Role-based access control
+- Tampilan modern menggunakan Bootstrap 5
+- Notifikasi modern menggunakan SweetAlert2
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 4. Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laravel 12
+- PHP 8.2+
+- SQLite (default project) atau dapat diubah ke MySQL/PostgreSQL
+- Breeze untuk autentikasi
+- Bootstrap 5
+- Bootstrap Icons
+- SweetAlert2
+- Vite untuk asset frontend
 
-## Laravel Sponsors
+## 5. Persyaratan Instalasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Sebelum menjalankan project, pastikan perangkat Anda sudah memiliki:
 
-### Premium Partners
+- PHP 8.2 atau lebih tinggi
+- Composer
+- Node.js dan npm
+- Database SQLite (sudah tersedia secara bawaan) atau database lain sesuai konfigurasi
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 6. Cara Install
 
-## Contributing
+1. Clone atau unduh project ini.
+2. Masuk ke folder project.
+3. Jalankan perintah berikut:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer install
+npm install
+```
 
-## Code of Conduct
+4. Buat file `.env` dari `.env.example` jika belum ada:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+5. Generate application key:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan key:generate
+```
 
-## License
+6. Jalankan migrasi database:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+```
+
+7. Jalankan seeder untuk membuat data awal (jika diperlukan):
+
+```bash
+php artisan db:seed
+```
+
+8. Build frontend assets:
+
+```bash
+npm run build
+```
+
+## 7. Cara Konfigurasi Database
+
+Project ini menggunakan SQLite secara default.
+
+### Database SQLite
+File database SQLite berada di:
+
+```text
+database/database.sqlite
+```
+
+Jika belum ada file tersebut, dapat dibuat dengan perintah:
+
+```bash
+touch database/database.sqlite
+```
+
+### Mengubah ke Database Lain
+Jika ingin menggunakan MySQL atau PostgreSQL, edit file `.env` seperti berikut:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pos_mitra
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Setelah itu jalankan:
+
+```bash
+php artisan migrate
+```
+
+## 8. Cara Menjalankan Project
+
+### Mode development
+
+```bash
+php artisan serve
+```
+
+Dan jalankan frontend asset secara terpisah:
+
+```bash
+npm run dev
+```
+
+### Mode production
+
+```bash
+npm run build
+php artisan serve
+```
+
+## 9. Cara Membuat User
+
+Project ini sudah menyediakan autentikasi Laravel Breeze. Untuk membuat user baru, gunakan salah satu cara berikut:
+
+### A. Melalui register di aplikasi
+- Buka halaman daftar (`/register`)
+- Isi nama, email, password
+- Setelah berhasil, user akan dibuat
+
+### B. Melalui seeder / database manual
+Jika ingin membuat user secara langsung, Anda juga bisa menambah data ke tabel `users` melalui database atau artisan tinker.
+
+Contoh umum:
+
+```bash
+php artisan tinker
+```
+
+Lalu:
+
+```php
+App\Models\User::create([
+    'name' => 'Admin POS',
+    'email' => 'admin@example.com',
+    'role' => 'admin',
+    'password' => bcrypt('password123'),
+]);
+```
+
+## 10. Cara Login
+
+1. Buka browser dan akses aplikasi.
+2. Masuk ke halaman login.
+3. Gunakan user yang sudah dibuat.
+4. Jika menggunakan seed default, user yang tersedia biasanya:
+   - Email: `test@example.com`
+   - Password: `password`
+
+> Catatan: password seed default dibuat oleh factory Laravel, sehingga untuk pengguna tertentu Anda dapat menyesuaikan sesuai kebutuhan.
+
+## 11. Struktur Fitur
+
+### Modul utama
+- `Dashboard` — ringkasan statistik dan aktivitas
+- `Kategori` — mengelola jenis produk
+- `Produk` — mengelola data barang, harga, stok, dan barcode
+- `Supplier` — mengelola pemasok
+- `Pelanggan` — mengelola data pelanggan
+- `Pembelian` — mencatat pembelian stok dari supplier
+- `Penjualan` — proses transaksi hingga struk
+- `Laporan` — laporan stok dan penjualan
+- `User` — pengaturan role admin/kasir
+
+## 12. Informasi Pengembangan
+
+### Struktur Direktori Penting
+
+```text
+app/
+  Http/
+    Controllers/
+    Middleware/
+  Models/
+bootstrap/
+config/
+database/
+  migrations/
+  seeders/
+resources/
+  css/
+  js/
+  views/
+routes/
+public/
+```
+
+### Role User
+Project ini sudah dilengkapi dengan middleware role untuk membatasi akses sesuai peran:
+
+- `admin` — dapat akses semua fitur utama, termasuk manajemen user, laporan, dan pembelian
+- `kasir` — dapat mengakses transaksi dan data umum, tetapi tidak semua fitur admin
+
+### UI & UX
+- Navbar otomatis menampilkan menu sesuai hak akses
+- Semua aksi CRUD dibangun dengan tampilan yang konsisten
+- SweetAlert2 digunakan untuk notifikasi dan konfirmasi hapus
+- Bootstrap Icons digunakan agar tombol dan ikon lebih rapi dan menarik
+
+## 13. Catatan Penting
+
+- Pastikan `npm run build` dijalankan setelah perubahan frontend atau saat project pertama kali dijalankan.
+- Jika terjadi error `ViteManifestNotFoundException`, pastikan asset frontend sudah dibangun dan `public/build/manifest.json` tersedia.
+- Role user dapat diubah melalui panel `User` atau secara langsung di database.
+
+## 14. License
+
+Project ini dibuat untuk kebutuhan pengembangan aplikasi POS berbasis Laravel dan dapat dikembangkan lebih lanjut sesuai kebutuhan bisnis.
