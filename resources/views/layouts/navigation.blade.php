@@ -15,6 +15,11 @@
                         Dashboard
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="{{ route('categories.index') }}">
+                        Kategori
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
