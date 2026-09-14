@@ -18,6 +18,8 @@ class Product extends Model
         'harga_beli',
         'harga_jual',
         'stok',
+        'satuan',
+        'status',
         'deskripsi',
     ];
 
