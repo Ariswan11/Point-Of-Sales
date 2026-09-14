@@ -35,6 +35,11 @@
                         Pelanggan
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('purchases.*') ? 'active' : '' }}" href="{{ route('purchases.create') }}">
+                        Pembelian
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
