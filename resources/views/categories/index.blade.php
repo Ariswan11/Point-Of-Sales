@@ -12,12 +12,7 @@
     </x-slot>
 
     <div class="container py-4">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+        <div data-swal-success="{{ session('success') }}" style="display:none"></div>
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="card-header border-0 bg-white py-3 px-4">
@@ -48,7 +43,7 @@
                                             <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
                                                 Edit
                                             </a>
-                                            <form action="{{ route('categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
+                                            <form action="{{ route('categories.destroy', $category) }}" method="POST" data-confirm-delete="Apakah Anda yakin ingin menghapus kategori ini?">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">

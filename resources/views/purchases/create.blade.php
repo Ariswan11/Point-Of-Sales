@@ -9,12 +9,7 @@
     </x-slot>
 
     <div class="container py-4">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+        <div data-swal-success="{{ session('success') }}" style="display:none"></div>
 
         <div class="row justify-content-center">
             <div class="col-lg-10">

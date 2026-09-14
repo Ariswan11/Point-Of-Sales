@@ -12,12 +12,7 @@
     </x-slot>
 
     <div class="container py-4">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+        <div data-swal-success="{{ session('success') }}" style="display:none"></div>
 
         <div class="card border-0 shadow-sm rounded-4 mb-4">
             <div class="card-body p-4">
@@ -96,7 +91,7 @@
                                             <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
                                                 Edit
                                             </a>
-                                            <form action="{{ route('products.destroy', $product) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                                            <form action="{{ route('products.destroy', $product) }}" method="POST" data-confirm-delete="Apakah Anda yakin ingin menghapus produk ini?">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">

@@ -9,23 +9,9 @@
     </x-slot>
 
     <div class="container py-4">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+        <div data-swal-success="{{ session('success') }}" style="display:none"></div>
 
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+        <div data-swal-error="{{ implode(' • ', $errors->all()) }}" style="display:none"></div>
 
         <div class="row g-4">
             <div class="col-lg-7">
@@ -217,7 +203,12 @@
 
             if (existing) {
                 if (existing.jumlah >= stock) {
-                    alert('Stok tidak mencukupi untuk produk ini.');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Stok tidak cukup',
+                        text: 'Stok tidak mencukupi untuk produk ini.',
+                        confirmButtonColor: '#f59e0b'
+                    });
                     return;
                 }
                 existing.jumlah += 1;
@@ -250,7 +241,12 @@
             }
 
             if (qty > stock) {
-                alert('Jumlah melebihi stok yang tersedia.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Jumlah terlalu banyak',
+                    text: 'Jumlah melebihi stok yang tersedia.',
+                    confirmButtonColor: '#f59e0b'
+                });
                 item.jumlah = stock;
                 item.subtotal = stock * item.harga;
                 renderCart();
@@ -285,7 +281,12 @@
                 const row = document.querySelector(`tr[data-product-id="${item.produk_id}"]`);
                 const stock = Number(row?.dataset.productStock || 0);
                 if (item.jumlah >= stock) {
-                    alert('Stok tidak mencukupi untuk produk ini.');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Stok tidak cukup',
+                        text: 'Stok tidak mencukupi untuk produk ini.',
+                        confirmButtonColor: '#f59e0b'
+                    });
                     return;
                 }
                 item.jumlah += 1;
@@ -328,13 +329,23 @@
 
             if (cart.length === 0) {
                 event.preventDefault();
-                alert('Keranjang masih kosong.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Keranjang kosong',
+                    text: 'Keranjang masih kosong.',
+                    confirmButtonColor: '#f59e0b'
+                });
                 return;
             }
 
             if (dibayar < total) {
                 event.preventDefault();
-                alert('Pembayaran harus cukup untuk menutup total transaksi.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Pembayaran kurang',
+                    text: 'Pembayaran harus cukup untuk menutup total transaksi.',
+                    confirmButtonColor: '#f59e0b'
+                });
                 return;
             }
 
