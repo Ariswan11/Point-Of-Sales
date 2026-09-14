@@ -30,6 +30,11 @@
                         Supplier
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('customers.*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
+                        Pelanggan
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto align-items-lg-center">

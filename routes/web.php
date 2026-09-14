@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('products', ProductController::class)->except(['show']);
     Route::resource('suppliers', SupplierController::class)->except(['show']);
+    Route::resource('customers', CustomerController::class)->except(['show']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
