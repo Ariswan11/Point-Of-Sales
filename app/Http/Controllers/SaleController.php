@@ -22,6 +22,13 @@ class SaleController extends Controller
         return view('sales.create', compact('customers', 'products'));
     }
 
+    public function receipt(Sale $sale): View
+    {
+        $sale->load(['customer', 'user', 'saleDetails.product']);
+
+        return view('sales.receipt', compact('sale'));
+    }
+
     public function store(StoreSaleRequest $request): RedirectResponse
     {
         $validated = $request->validated();
@@ -77,7 +84,9 @@ class SaleController extends Controller
             return back()->withErrors(['dibayar' => 'Jumlah pembayaran tidak boleh kurang dari total transaksi.'])->withInput();
         }
 
-        DB::transaction(function () use ($validated, $saleItems, $total, $dibayar, $kembalian) {
+        $saleId = null;
+
+        DB::transaction(function () use ($validated, $saleItems, $total, $dibayar, $kembalian, &$saleId) {
             $sale = Sale::create([
                 'pelanggan_id' => $validated['pelanggan_id'] ?? null,
                 'user_id' => Auth::id(),
@@ -101,8 +110,10 @@ class SaleController extends Controller
 
                 Product::whereKey($item['produk_id'])->decrement('stok', $item['jumlah']);
             }
+
+            $saleId = $sale->id;
         });
 
-        return redirect()->route('sales.create')->with('success', 'Transaksi penjualan berhasil disimpan.');
+        return redirect()->route('sales.receipt', ['sale' => $saleId])->with('success', 'Transaksi penjualan berhasil disimpan.');
     }
 }
