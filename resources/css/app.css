@@ -136,16 +136,18 @@ main {
 }
 
 .btn-warning {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
     border-color: transparent;
     color: #1f2937;
+    box-shadow: 0 10px 22px rgba(245, 158, 11, 0.28);
 }
 
 .btn-warning:hover,
 .btn-warning:focus {
-    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    background: linear-gradient(135deg, #facc15 0%, #d97706 100%);
     border-color: transparent;
     color: #1f2937;
+    box-shadow: 0 12px 24px rgba(217, 119, 6, 0.32);
 }
 
 .btn-action-primary,
@@ -156,52 +158,63 @@ main {
     justify-content: center;
     gap: 0.45rem;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0.5rem 0.9rem;
     border-width: 1.5px;
     transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
 .btn-action-primary {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0.06));
-    border-color: rgba(59, 130, 246, 0.45);
-    color: #1d4ed8;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(96, 165, 250, 0.1));
+    border-color: rgba(37, 99, 235, 0.55);
+    color: #1e40af;
+    box-shadow: 0 8px 18px rgba(59, 130, 246, 0.12);
 }
 
 .btn-action-primary:hover,
 .btn-action-primary:focus {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.1));
-    border-color: rgba(59, 130, 246, 0.6);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
-    color: #1d4ed8;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(96, 165, 250, 0.14));
+    border-color: rgba(37, 99, 235, 0.7);
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18);
+    color: #1e40af;
 }
 
 .btn-action-danger {
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.12), rgba(220, 53, 69, 0.04));
-    border-color: rgba(220, 53, 69, 0.45);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(248, 113, 113, 0.08));
+    border-color: rgba(220, 38, 38, 0.55);
     color: #b91c1c;
+    box-shadow: 0 8px 18px rgba(239, 68, 68, 0.12);
 }
 
 .btn-action-danger:hover,
 .btn-action-danger:focus {
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.18), rgba(220, 53, 69, 0.08));
-    border-color: rgba(220, 53, 69, 0.6);
-    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.15);
-    color: #b91c1c;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.22), rgba(248, 113, 113, 0.1));
+    border-color: rgba(220, 38, 38, 0.7);
+    box-shadow: 0 10px 24px rgba(239, 68, 68, 0.18);
+    color: #991b1b;
 }
 
 .btn-action-secondary {
-    background: linear-gradient(135deg, rgba(108, 117, 125, 0.12), rgba(108, 117, 125, 0.04));
-    border-color: rgba(108, 117, 125, 0.4);
-    color: #374151;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.14), rgba(129, 140, 248, 0.08));
+    border-color: rgba(79, 70, 229, 0.5);
+    color: #4338ca;
+    box-shadow: 0 8px 18px rgba(99, 102, 241, 0.1);
 }
 
 .btn-action-secondary:hover,
 .btn-action-secondary:focus {
-    background: linear-gradient(135deg, rgba(108, 117, 125, 0.18), rgba(108, 117, 125, 0.08));
-    border-color: rgba(108, 117, 125, 0.6);
-    box-shadow: 0 8px 20px rgba(108, 117, 125, 0.12);
-    color: #374151;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(129, 140, 248, 0.12));
+    border-color: rgba(79, 70, 229, 0.7);
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.16);
+    color: #3730a3;
+}
+
+.btn-action-primary .bi,
+.btn-action-danger .bi,
+.btn-action-secondary .bi,
+.btn .bi {
+    font-size: 0.95rem;
+    color: inherit;
 }
 
 .btn-action-primary:hover,
