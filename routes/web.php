@@ -19,22 +19,31 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('categories', CategoryController::class)->except(['show']);
-    Route::get('/products/stock-report', [ProductController::class, 'stockReport'])->name('products.stock-report');
-    Route::resource('products', ProductController::class)->except(['show']);
-    Route::resource('suppliers', SupplierController::class)->except(['show']);
-    Route::resource('customers', CustomerController::class)->except(['show']);
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/sales/create', [SaleController::class, 'create'])->name('sales.create');
-    Route::get('/sales/report', [SaleController::class, 'report'])->name('sales.report');
-    Route::get('/sales/{sale}/detail', [SaleController::class, 'detail'])->name('sales.detail');
     Route::get('/sales/{sale}/receipt', [SaleController::class, 'receipt'])->name('sales.receipt');
     Route::post('/sales', [SaleController::class, 'store'])->name('sales.store');
-    Route::get('/purchases/create', [PurchaseController::class, 'create'])->name('purchases.create');
-    Route::post('/purchases', [PurchaseController::class, 'store'])->name('purchases.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('categories', CategoryController::class)->except(['index', 'show']);
+    Route::resource('products', ProductController::class)->except(['index', 'show']);
+    Route::resource('suppliers', SupplierController::class)->except(['index', 'show']);
+    Route::resource('customers', CustomerController::class)->except(['index', 'show']);
+    Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'edit', 'update']);
+
+    Route::get('/products/stock-report', [ProductController::class, 'stockReport'])->name('products.stock-report');
+    Route::get('/sales/report', [SaleController::class, 'report'])->name('sales.report');
+    Route::get('/sales/{sale}/detail', [SaleController::class, 'detail'])->name('sales.detail');
+    Route::get('/purchases/create', [PurchaseController::class, 'create'])->name('purchases.create');
+    Route::post('/purchases', [PurchaseController::class, 'store'])->name('purchases.store');
 });
 
 require __DIR__.'/auth.php';
