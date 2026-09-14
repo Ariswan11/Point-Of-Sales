@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Sale;
 use App\Models\SaleDetail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -20,6 +21,32 @@ class SaleController extends Controller
         $products = Product::with('category')->orderBy('nama')->get();
 
         return view('sales.create', compact('customers', 'products'));
+    }
+
+    public function report(Request $request): View
+    {
+        $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
+        $endDate = $request->input('end_date', now()->endOfMonth()->toDateString());
+
+        $salesQuery = Sale::query()
+            ->with(['customer', 'user', 'saleDetails.product'])
+            ->whereBetween('tanggal_penjualan', [$startDate, $endDate])
+            ->orderByDesc('tanggal_penjualan')
+            ->orderByDesc('id');
+
+        $sales = $salesQuery->get();
+        $totalPenjualan = Sale::query()
+            ->whereBetween('tanggal_penjualan', [$startDate, $endDate])
+            ->sum('total') ?? 0;
+
+        return view('sales.report', compact('sales', 'startDate', 'endDate', 'totalPenjualan'));
+    }
+
+    public function detail(Sale $sale): View
+    {
+        $sale->load(['customer', 'user', 'saleDetails.product']);
+
+        return view('sales.detail', compact('sale'));
     }
 
     public function receipt(Sale $sale): View

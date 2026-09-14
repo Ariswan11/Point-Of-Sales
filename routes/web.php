@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class)->except(['show']);
     Route::resource('customers', CustomerController::class)->except(['show']);
     Route::get('/sales/create', [SaleController::class, 'create'])->name('sales.create');
+    Route::get('/sales/report', [SaleController::class, 'report'])->name('sales.report');
+    Route::get('/sales/{sale}/detail', [SaleController::class, 'detail'])->name('sales.detail');
     Route::get('/sales/{sale}/receipt', [SaleController::class, 'receipt'])->name('sales.receipt');
     Route::post('/sales', [SaleController::class, 'store'])->name('sales.store');
     Route::get('/purchases/create', [PurchaseController::class, 'create'])->name('purchases.create');

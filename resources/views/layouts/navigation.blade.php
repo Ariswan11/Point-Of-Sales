@@ -41,6 +41,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('sales.report') ? 'active' : '' }}" href="{{ route('sales.report') }}">
+                        Laporan
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('purchases.*') ? 'active' : '' }}" href="{{ route('purchases.create') }}">
                         Pembelian
                     </a>
