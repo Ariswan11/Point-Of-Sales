@@ -57,7 +57,8 @@
                                             <td>{{ $product->stok }}</td>
                                             <td>Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-sm btn-primary rounded-pill add-to-cart" data-product-id="{{ $product->id }}">
+                                                <button type="button" class="btn btn-sm btn-warning rounded-pill add-to-cart" data-product-id="{{ $product->id }}">
+                                                    <i class="bi bi-plus-circle me-1"></i>
                                                     Tambah
                                                 </button>
                                             </td>
@@ -169,14 +170,21 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center gap-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" data-action="decrease" data-index="${index}">-</button>
+                                <button type="button" class="btn btn-sm btn-action-secondary" data-action="decrease" data-index="${index}">
+                                    <i class="bi bi-dash-lg"></i>
+                                </button>
                                 <input type="number" min="1" class="form-control form-control-sm text-center" value="${item.jumlah}" data-action="qty" data-index="${index}" style="width: 70px;">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" data-action="increase" data-index="${index}">+</button>
+                                <button type="button" class="btn btn-sm btn-action-secondary" data-action="increase" data-index="${index}">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
                             </div>
                         </td>
                         <td>${formatCurrency(item.subtotal)}</td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-outline-danger" data-action="remove" data-index="${index}">Hapus</button>
+                            <button type="button" class="btn btn-sm btn-action-danger" data-action="remove" data-index="${index}">
+                                <i class="bi bi-trash3"></i>
+                                <span>Hapus</span>
+                            </button>
                         </td>
                     </tr>
                 `;

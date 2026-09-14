@@ -44,8 +44,9 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                            Edit Role
+                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-action-primary">
+                                            <i class="bi bi-person-gear"></i>
+                                            <span>Edit Role</span>
                                         </a>
                                     </td>
                                 </tr>

@@ -89,8 +89,9 @@
                                     <td>Rp {{ number_format($sale->dibayar, 0, ',', '.') }}</td>
                                     <td>Rp {{ number_format($sale->kembalian, 0, ',', '.') }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('sales.detail', $sale) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                            Detail
+                                        <a href="{{ route('sales.detail', $sale) }}" class="btn btn-sm btn-action-secondary">
+                                            <i class="bi bi-eye"></i>
+                                            <span>Detail</span>
                                         </a>
                                     </td>
                                 </tr>

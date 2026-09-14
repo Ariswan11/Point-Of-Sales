@@ -148,6 +148,71 @@ main {
     color: #1f2937;
 }
 
+.btn-action-primary,
+.btn-action-danger,
+.btn-action-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    border-width: 1.5px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-action-primary {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0.06));
+    border-color: rgba(59, 130, 246, 0.45);
+    color: #1d4ed8;
+}
+
+.btn-action-primary:hover,
+.btn-action-primary:focus {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.1));
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    color: #1d4ed8;
+}
+
+.btn-action-danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.12), rgba(220, 53, 69, 0.04));
+    border-color: rgba(220, 53, 69, 0.45);
+    color: #b91c1c;
+}
+
+.btn-action-danger:hover,
+.btn-action-danger:focus {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.18), rgba(220, 53, 69, 0.08));
+    border-color: rgba(220, 53, 69, 0.6);
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.15);
+    color: #b91c1c;
+}
+
+.btn-action-secondary {
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.12), rgba(108, 117, 125, 0.04));
+    border-color: rgba(108, 117, 125, 0.4);
+    color: #374151;
+}
+
+.btn-action-secondary:hover,
+.btn-action-secondary:focus {
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.18), rgba(108, 117, 125, 0.08));
+    border-color: rgba(108, 117, 125, 0.6);
+    box-shadow: 0 8px 20px rgba(108, 117, 125, 0.12);
+    color: #374151;
+}
+
+.btn-action-primary:hover,
+.btn-action-danger:hover,
+.btn-action-secondary:hover,
+.btn-action-primary:focus,
+.btn-action-danger:focus,
+.btn-action-secondary:focus {
+    transform: translateY(-1px);
+}
+
 .btn-outline-secondary,
 .btn-outline-primary,
 .btn-outline-danger {

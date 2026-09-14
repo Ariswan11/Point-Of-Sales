@@ -63,14 +63,16 @@
                                     <td>{{ $supplier->alamat ?: '-' }}</td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center gap-2">
-                                            <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                                                Edit
+                                            <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-sm btn-action-primary">
+                                                <i class="bi bi-pencil-square"></i>
+                                                <span>Edit</span>
                                             </a>
                                             <form action="{{ route('suppliers.destroy', $supplier) }}" method="POST" data-confirm-delete="Apakah Anda yakin ingin menghapus supplier ini?">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">
-                                                    Hapus
+                                                <button type="submit" class="btn btn-sm btn-action-danger">
+                                                    <i class="bi bi-trash3"></i>
+                                                    <span>Hapus</span>
                                                 </button>
                                             </form>
                                         </div>
