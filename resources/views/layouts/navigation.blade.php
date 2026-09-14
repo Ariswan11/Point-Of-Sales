@@ -25,6 +25,11 @@
                         Produk
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('suppliers.*') ? 'active' : '' }}" href="{{ route('suppliers.index') }}">
+                        Supplier
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
