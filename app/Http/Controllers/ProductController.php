@@ -34,6 +34,29 @@ class ProductController extends Controller
         return view('products.index', compact('products', 'categories'));
     }
 
+    public function stockReport(): View
+    {
+        $categories = Category::orderBy('nama')->get();
+        $query = Product::with('category')->orderBy('nama');
+
+        if (request()->filled('search')) {
+            $search = request('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
+                  ->orWhere('kode_produk', 'like', "%{$search}%")
+                  ->orWhere('barcode', 'like', "%{$search}%");
+            });
+        }
+
+        if (request()->filled('category_id')) {
+            $query->where('kategori_id', request('category_id'));
+        }
+
+        $products = $query->get();
+
+        return view('products.stock-report', compact('products', 'categories'));
+    }
+
     public function create(): View
     {
         $categories = Category::orderBy('nama')->get();

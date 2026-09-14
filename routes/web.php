@@ -20,6 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::get('/products/stock-report', [ProductController::class, 'stockReport'])->name('products.stock-report');
     Route::resource('products', ProductController::class)->except(['show']);
     Route::resource('suppliers', SupplierController::class)->except(['show']);
     Route::resource('customers', CustomerController::class)->except(['show']);
