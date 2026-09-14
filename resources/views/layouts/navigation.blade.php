@@ -41,22 +41,23 @@
                         Penjualan
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('purchases.*') ? 'active' : '' }}" href="{{ route('purchases.create') }}">
-                        Pembelian
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('products.stock-report') ? 'active' : '' }}" href="{{ route('products.stock-report') }}">
-                        Laporan Stok
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('sales.report') ? 'active' : '' }}" href="{{ route('sales.report') }}">
-                        Laporan
-                    </a>
-                </li>
+
                 @if(Auth::user()->role === 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('purchases.*') ? 'active' : '' }}" href="{{ route('purchases.create') }}">
+                            Pembelian
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('products.stock-report') ? 'active' : '' }}" href="{{ route('products.stock-report') }}">
+                            Laporan Stok
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('sales.report') ? 'active' : '' }}" href="{{ route('sales.report') }}">
+                            Laporan
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}">
                             User
