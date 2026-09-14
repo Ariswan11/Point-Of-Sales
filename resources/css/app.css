@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bs-body-font-family: 'Inter', sans-serif;
+    --bs-body-bg: #f4f7fb;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+}
+
+body {
+    background: linear-gradient(180deg, #f4f7fb 0%, #edf3ff 100%);
+}
+
+.card {
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.table thead th {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.navbar-brand {
+    font-weight: 800;
+}
