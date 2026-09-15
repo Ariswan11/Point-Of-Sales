@@ -43,10 +43,4 @@
         </button>
     </form>
 
-    @if (Route::has('register'))
-        <div class="text-center mt-4 small text-secondary">
-            Belum punya akun?
-            <a href="{{ route('register') }}" class="fw-semibold text-dark text-decoration-none">Daftar sekarang</a>
-        </div>
-    @endif
 </x-guest-layout>

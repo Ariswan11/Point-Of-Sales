@@ -60,11 +60,6 @@
                                 <li class="nav-item">
                                     <a href="{{ route('login') }}" class="btn btn-outline-light ms-lg-2">Masuk</a>
                                 </li>
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a href="{{ route('register') }}" class="btn btn-warning fw-semibold ms-lg-1">Daftar</a>
-                                    </li>
-                                @endif
                             @endauth
                         @endif
                     </ul>
@@ -94,9 +89,6 @@
                                         <a href="{{ url('/dashboard') }}" class="btn btn-warning btn-lg px-4 fw-semibold">Buka Dashboard</a>
                                     @else
                                         <a href="{{ route('login') }}" class="btn btn-warning btn-lg px-4 fw-semibold">Masuk Sekarang</a>
-                                        @if (Route::has('register'))
-                                            <a href="{{ route('register') }}" class="btn btn-outline-light btn-lg px-4">Daftar Gratis</a>
-                                        @endif
                                     @endauth
                                 @endif
                             </div>
