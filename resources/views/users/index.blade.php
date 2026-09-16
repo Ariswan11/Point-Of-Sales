@@ -13,9 +13,15 @@
 
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="card-header border-0 bg-white py-3 px-4">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center gap-3">
                     <h3 class="h5 mb-0 fw-bold">Daftar User</h3>
-                    <span class="badge bg-light text-dark rounded-pill px-3 py-2">{{ $users->count() }} user</span>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-light text-dark rounded-pill px-3 py-2">{{ $users->count() }} user</span>
+                        <a href="{{ route('users.create') }}" class="btn btn-warning fw-semibold rounded-pill px-3">
+                            <i class="bi bi-person-plus"></i>
+                            <span>Tambah User</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card-body p-0">

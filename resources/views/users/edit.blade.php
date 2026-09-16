@@ -30,8 +30,11 @@
                             <div class="mb-4">
                                 <label for="role" class="form-label fw-semibold">Role</label>
                                 <select class="form-select @error('role') is-invalid @enderror" id="role" name="role">
-                                    <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
-                                    <option value="kasir" {{ old('role', $user->role) === 'kasir' ? 'selected' : '' }}>Kasir</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->value }}" {{ old('role', $user->role) === $role->value ? 'selected' : '' }}>
+                                            {{ $role->label() }}
+                                        </option>
+                                    @endforeach
                                 </select>
                                 @error('role')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>

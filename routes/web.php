@@ -37,7 +37,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('products', ProductController::class)->except(['index', 'show']);
     Route::resource('suppliers', SupplierController::class)->except(['index', 'show']);
     Route::resource('customers', CustomerController::class)->except(['index', 'show']);
-    Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'edit', 'update']);
+    Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'create', 'store', 'edit', 'update']);
 
     Route::get('/products/stock-report', [ProductController::class, 'stockReport'])->name('products.stock-report');
     Route::get('/sales/report', [SaleController::class, 'report'])->name('sales.report');

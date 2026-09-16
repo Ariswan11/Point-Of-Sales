@@ -23,6 +23,10 @@
                 </header>
             @endisset
 
+            @if (session('swal_success'))
+                <div data-swal-success="{{ session('swal_success') }}" style="display:none"></div>
+            @endif
+
             <main class="container py-4">
                 {{ $slot }}
             </main>

@@ -8,8 +8,21 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-window.addEventListener('DOMContentLoaded', () => {
-    const swal = window.Swal;
+const ensureSweetAlert = () => new Promise((resolve) => {
+    if (window.Swal) {
+        resolve(window.Swal);
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+    script.onload = () => resolve(window.Swal);
+    script.onerror = () => resolve(null);
+    document.body.appendChild(script);
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const swal = await ensureSweetAlert();
 
     if (!swal) {
         return;
@@ -37,12 +50,35 @@ window.addEventListener('DOMContentLoaded', () => {
         if (message) {
             swal.fire({
                 icon: 'error',
-                title: 'Terjadi Kesalahan',
+                title: 'Login Gagal',
                 text: message,
                 confirmButtonText: 'Tutup',
                 confirmButtonColor: '#dc3545',
             });
         }
+    });
+
+    document.querySelectorAll('[data-toggle-password]').forEach((toggleButton) => {
+        const targetId = toggleButton.dataset.togglePassword;
+        const passwordInput = document.getElementById(targetId);
+
+        if (!passwordInput) {
+            return;
+        }
+
+        toggleButton.addEventListener('click', () => {
+            const isPasswordHidden = passwordInput.type === 'password';
+            const iconElement = toggleButton.querySelector('i');
+
+            passwordInput.type = isPasswordHidden ? 'text' : 'password';
+
+            if (iconElement) {
+                iconElement.classList.toggle('bi-eye', !isPasswordHidden);
+                iconElement.classList.toggle('bi-eye-slash', isPasswordHidden);
+            }
+
+            toggleButton.setAttribute('aria-label', isPasswordHidden ? 'Sembunyikan password' : 'Tampilkan password');
+        });
     });
 
     document.querySelectorAll('form[data-confirm-delete]').forEach((form) => {
